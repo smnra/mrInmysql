@@ -11,6 +11,7 @@ if len(sys.argv) == 1 :
     print('Not Find Path, arg1 is path of the ".tgz" file path.')
     exit()
 elif len(sys.argv) > 1 :
+    #如果路径不存在 则打印'Path Is Not Exist!' 退出脚本
     if not os.path.exists(sys.argv[1]) :
         print('Path Is Not Exist!')
         exit()

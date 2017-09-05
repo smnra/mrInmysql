@@ -19,17 +19,21 @@ def isMatch(reStr, fileName):
 
 def unzip(reStr,fileName,tagPath) :
     if not os.path.exists(fileName) :
+        #如果路径不存在 则打印'Path Is Not Exist!' 函数返回 -1
         print('FileName Is Not Exist!')
         return -1
     if not os.path.exists(tagPath) :
+        #如果路径不存在 则打印'Path Is Not Exist!' 函数返回 -2
         print('FileName Is Not Exist!')
         return -2
-
+    #tarfile 打开压缩包文件
     tar = tarfile.open(fileName)
+    #获取压缩包内的文件名保存到names
     names = tar.getnames()
     for name in names:
+        #遍历文件名列表,如果 匹配正则表达式函数 isMatch() 则解压缩 文件到 tagPath 文件夹
         if isMatch(reStr,fileName):
-            #tar.extract(name, tagPath)
+            tar.extract(name, tagPath)
             print(name)
     return 0
 
