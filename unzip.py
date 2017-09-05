@@ -32,13 +32,14 @@ def unzip(reStr,fileName,tagPath) :
     names = tar.getnames()
     for name in names:
         #遍历文件名列表,如果 匹配正则表达式函数 isMatch() 则解压缩 文件到 tagPath 文件夹
-        if isMatch(reStr,fileName):
+        if isMatch(reStr,name):
             tar.extract(name, tagPath)
             print(name)
+    tar.close()
     return 0
 
 if __name__ ==  '__main__' :
-   unzip(reStr, '.\\test.tar.gzip', '.\\')
+   unzip(reStr, 'H:\\BaiduYunDownload\\test\\20170725.csv.tar.gzip',  'H:\\BaiduYunDownload\\test\\sx')
 
 
 
