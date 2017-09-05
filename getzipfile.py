@@ -15,7 +15,7 @@ elif len(sys.argv) > 1 :
     if not os.path.exists(sys.argv[1]) :
         print('Path Is Not Exist!')
         exit()
-#从参数获取保存压缩包的路径
+#从参数获取保存压缩包的路径 
 basePath = sys.argv[1]
 def getGzipList(basePath = os.path.abspath(sys.path[0])):    #默认参数为脚本所在路径
     zipFlieList = []
