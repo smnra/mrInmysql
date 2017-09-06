@@ -6,8 +6,34 @@ import sys
 import pandas as pd
 import numpy as np
 
-from  datetime  import datetime
-import matplotlib.pyplot as plt
-from matplotlib import ticker
-from sqlalchemy import create_engine
-from matplotlib.dates import AutoDateLocator, DateFormatter
+from datetime  import datetime
+from sqlalchemy import create_engine, Column, String, DateTime, Integer, Float, Boolean, VARCHAR
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+
+filename = r'H:\BaiduYunDownload\test\sx\Tongchuan-cell-2017-07-02.csv'
+mysql_uri = 'mysql+pymysql://root:10300@192.168.3.74:50014/temp?charset=utf8'
+tablename = 'mr_cell'
+
+def inmysql(mysql_uri, tablename, *filenames ) :
+    #共三个以上参数,
+    # 第一个参数为mysql的连接字符串, 第二个为存储的表名,后面的参数都为需要读取的csv的文件名
+    count= 0
+    #用sqlalchemy创建引擎
+    engine = create_engine(mysql_uri)
+    #读取csv文件为 DataFream个数数据
+    for filename in filenames :
+        #遍历filenames 列表 ,读取filename的csv文件为dataFream格式数据,并添加到mrdatas列表中
+        mrdata = pd.read_csv(filename)
+        #写入mysql数据库 表，
+        if pd.io.sql.to_sql(mrdata,tablename,con=engine,if_exists='append') :
+            count += 1
+    return count
+    # #存入数据库，这句有时候运行一次报错，运行第二次就不报错了，不知道为什么
+    # mrdata.to_sql(tablename,engine,if_exists='append')
+
+
+
+if __name__ == '__main__' :
+    inmysql(mysql_uri, tablename, filename)
