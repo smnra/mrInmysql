@@ -1,15 +1,9 @@
 #!/usr/bin/env python
 # coding = utf-8
 
-import os
-import sys
 import pandas as pd
-import numpy as np
+from sqlalchemy import create_engine
 
-from datetime  import datetime
-from sqlalchemy import create_engine, Column, String, DateTime, Integer, Float, Boolean, VARCHAR
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
 
 
 filename = r'H:\BaiduYunDownload\test\sx\Tongchuan-cell-2017-07-02.csv'
