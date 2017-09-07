@@ -5,7 +5,6 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 
-
 filename = r'H:\BaiduYunDownload\test\sx\Tongchuan-cell-2017-07-02.csv'
 mysql_uri = 'mysql+pymysql://root:10300@192.168.3.74:50014/temp?charset=utf8'
 tablename = 'mr_cell'
@@ -16,6 +15,10 @@ def inmysql(mysql_uri, tablename, *filenames ) :
     count= 0
     #用sqlalchemy创建引擎
     engine = create_engine(mysql_uri)
+
+    #如果第三个参数列表 则直接使用列表遍历
+    if type(filenames[0]) != type('a'):
+        filenames = filenames[0]
     #读取csv文件为 DataFream个数数据
     for filename in filenames :
         #遍历filenames 列表 ,读取filename的csv文件为dataFream格式数据,并添加到mrdatas列表中
