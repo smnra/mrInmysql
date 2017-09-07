@@ -39,13 +39,13 @@ def unzip(reStr,fileName) :
         #遍历文件名列表,如果 匹配正则表达式函数 isMatch() 则解压缩 文件到 tagPath 文件夹
         if isMatch(reStr,name):
             tar.extract(name, tagPath)
-            unzipfiles.append(os.path.abspath(name))
+            unzipfiles.append(os.path.join(tagPath, name))
             print(os.path.abspath(name))
     tar.close()
     return unzipfiles
 
 if __name__ ==  '__main__' :
-   unzip(reStr, 'H:\\BaiduYunDownload\\test\\20170725.csv.tar.gzip')
+   unzip(reStr, r'H:\BaiduYunDownload\testw文件\20170702-1.csv.tar.gzip')
 
 
 

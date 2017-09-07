@@ -13,6 +13,7 @@ def inmysql(mysql_uri, tablename, *filenames ) :
     #共三个以上参数,
     # 第一个参数为mysql的连接字符串, 第二个为存储的表名,后面的参数都为需要读取的csv的文件名
     count= 0
+    csvfile = ''
     #用sqlalchemy创建引擎
     engine = create_engine(mysql_uri)
 
@@ -20,9 +21,9 @@ def inmysql(mysql_uri, tablename, *filenames ) :
     if type(filenames[0]) != type('a'):
         filenames = filenames[0]
     #读取csv文件为 DataFream个数数据
-    for filename in filenames :
+    for csvfile in filenames :
         #遍历filenames 列表 ,读取filename的csv文件为dataFream格式数据,并添加到mrdatas列表中
-        mrdata = pd.read_csv(filename)
+        mrdata = pd.read_csv(csvfile)
         #写入mysql数据库 表，
         if pd.io.sql.to_sql(mrdata,tablename,con=engine,if_exists='append') :
             count += 1
