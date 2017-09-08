@@ -52,7 +52,9 @@ def inmysql(mysql_uri, tablename, *filenames ) :
             #如果路径不存在 则打印'Path Is Not Exist!' 函数返回 -1
             print('File Does Not Exist!')
             return -1
-
+        else :
+            #从csv文件名中提取城市名
+            city = os.path.split(csvfile)[1].split('-')[0]
         #遍历filenames 列表 ,读取filename的csv文件为dataFream格式数据,并添加到mrdatas列表中
         #index_col = False 参数为不使用(读取)索引
         mrdata = pd.read_csv(csvfile,low_memory = False, index_col = False )
@@ -75,7 +77,7 @@ def inmysql(mysql_uri, tablename, *filenames ) :
         del mrdata['ping_baiduv']
         del mrdata['ping_letv']
         del mrdata['ping_tudou']
-        #mrdata.insert(0,'filename',csvfile)
+        mrdata.insert(0,'filename',csvfile)
 
 
 
