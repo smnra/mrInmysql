@@ -13,7 +13,7 @@ mysql_uri = 'mysql+pymysql://root:10300@192.168.3.74:50014/temp?charset=utf8'
 tablename = 'mr_cell'
 #写入数据库时的数据类型
 datatype = {
-    'filename': sqlalchemy.String,
+    'filename': sqlalchemy.String(32),
     'IMEI': sqlalchemy.String(32),
     'IMSI': sqlalchemy.String(32),
     'time': sqlalchemy.String(32),
