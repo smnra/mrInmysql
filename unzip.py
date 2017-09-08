@@ -8,7 +8,7 @@ import tarfile
 import re
 
 
-reStr = r'Baoji|Xian|Xianyang|Hanzhong|Tongchuan|Shangluo|Yulin|Yanan|Weinan|Ankang'
+reStr = r'Baoji-cell|Xian-cell|Xianyang-cell|Hanzhong-cell|Tongchuan-cell|Shangluo-cell|Yulin-cell|Yanan-cell|Weinan-cell|Ankang-cell'
 
 #定义正则表达式 来匹配文件名
 def isMatch(reStr, fileName):
@@ -40,12 +40,12 @@ def unzip(reStr,fileName) :
         if isMatch(reStr,name):
             tar.extract(name, tagPath)
             unzipfiles.append(os.path.join(tagPath, name))
-            print(os.path.abspath(name))
+            print(os.path.join(tagPath, name) + 'unzip complate!' )
     tar.close()
     return unzipfiles
 
 if __name__ ==  '__main__' :
-   unzip(reStr, r'H:\BaiduYunDownload\testw文件\20170702-1.csv.tar.gzip')
+    unzip(reStr, r'H:\BaiduYunDownload\7月份数据\20170702-1.csv.tar.gzip')
 
 
 

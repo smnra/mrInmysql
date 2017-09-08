@@ -32,7 +32,7 @@ ziplist = []
 csvlist = []
 
 #匹配csv文件名的正则表达式
-reStr = r'Baoji|Xian|Xianyang|Hanzhong|Tongchuan|Shangluo|Yulin|Yanan|Weinan|Ankang'
+reStr = r'Baoji-cell|Xian-cell|Xianyang-cell|Hanzhong-cell|Tongchuan-cell|Shangluo-cell|Yulin-cell|Yanan-cell|Weinan-cell|Ankang-cell'
 #mysql连接字符串
 mysql_uri = 'mysql+pymysql://root:10300@192.168.3.74:50014/temp?charset=utf8'
 

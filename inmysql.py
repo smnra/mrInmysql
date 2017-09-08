@@ -57,9 +57,11 @@ def inmysql(mysql_uri, tablename, *filenames ) :
             city = os.path.split(csvfile)[1].split('-')[0]
         #遍历filenames 列表 ,读取filename的csv文件为dataFream格式数据,并添加到mrdatas列表中
         #index_col = False 参数为不使用(读取)索引
+        print('Start read_csv file :' + csvfile)
         mrdata = pd.read_csv(csvfile,low_memory = False, index_col = False )
 
         #替换列名中使用正则表达式替换 reReplace.sub('_', x)         r'[\.\\\(\)/]'
+        print('Start modify file :' + csvfile)
         mrdata.rename(columns=lambda x: reReplace.sub('_', x), inplace=True)
 
         del mrdata['battery']
@@ -83,11 +85,13 @@ def inmysql(mysql_uri, tablename, *filenames ) :
 
         #写入mysql数据库 表， 第一个参数 为原始数据,第二个参数为写入表的名称,
         # 第4个if_exists为如果表存在则追加,第6个dtype为各个字段的数据类型 第5个index 参数为是否添加索引列
+        print('Start in mysql file :' + csvfile)
         pd.io.sql.to_sql(mrdata,tablename,con=engine,if_exists='append', index = True, dtype = datatype )
         count += 1
+        print(csvfile + 'in mysql completed!')
     return count
     # #存入数据库，这句有时候运行一次报错，运行第二次就不报错了，不知道为什么
     # mrdata.to_sql(tablename,engine,if_exists='append')
 
 if __name__ == '__main__' :
-    inmysql(mysql_uri, tablename, filename)
+    inmysql(mysql_uri, tablename, r'H:\BaiduYunDownload\7月份数据\20170704-1_csv_tar_gzip\Yulin-cell-2017-07-04.csv')
