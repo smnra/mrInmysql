@@ -49,7 +49,6 @@ for zip in ziplist :
     for csvfile in  unzipfiles :
         if 'cell' in csvfile :
             tablename = 'mr_cell'
-        elif 'wifi' in csvfile :
-            tablename = 'mr_wifi'
-        #读取scv文件csvfile，把表格写进mysql中tablename表中
-        inmysql(mysql_uri, tablename, csvfile)
+            #读取scv文件csvfile，把表格写进mysql中tablename表中
+            inmysql(mysql_uri, tablename, csvfile)
+

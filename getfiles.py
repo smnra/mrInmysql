@@ -13,7 +13,7 @@ if len(sys.argv) == 1 :
 elif len(sys.argv) > 1 :
     #如果路径不存在 则打印'Path Is Not Exist!' 退出脚本
     if not os.path.exists(sys.argv[1]) :
-        print('Path Is Not Exist!')
+        print('Path Does Not Exist!')
         exit()
 #从参数获取保存压缩包的路径
 basePath = sys.argv[1]

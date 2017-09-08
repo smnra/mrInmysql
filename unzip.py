@@ -22,7 +22,7 @@ def unzip(reStr,fileName) :
     unzipfiles = []
     if not os.path.exists(fileName) :
         #如果路径不存在 则打印'Path Is Not Exist!' 函数返回 -1
-        print('FileName Is Not Exist!')
+        print('File Does Not Exist!!!')
         return -1
 
     #替换文件路径中的'.' 为 '_",创建文件夹
