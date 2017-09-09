@@ -40,7 +40,7 @@ def unzip(reStr,fileName) :
         if isMatch(reStr,name):
             tar.extract(name, tagPath)
             unzipfiles.append(os.path.join(tagPath, name))
-            print(os.path.join(tagPath, name) + 'unzip complate!' )
+            print(os.path.join(tagPath, name) + 'unzip complate!')
     tar.close()
     return unzipfiles
 

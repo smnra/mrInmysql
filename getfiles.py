@@ -9,14 +9,17 @@ import re
 #获取当前脚本运行时的参数 如果只有1个参数(脚本自身),则打印提示信息
 if len(sys.argv) == 1 :
     print('Not Find Path, arg1 is path of the ".tgz" file path.')
-    exit()
+    #从参数获取保存压缩包的路径
+    basePath = '.\\'
 elif len(sys.argv) > 1 :
     #如果路径不存在 则打印'Path Is Not Exist!' 退出脚本
     if not os.path.exists(sys.argv[1]) :
         print('Path Does Not Exist!')
-        exit()
-#从参数获取保存压缩包的路径
-basePath = sys.argv[1]
+        basePath = '.\\'
+        #从参数获取保存压缩包的路径
+    else :
+        basePath = sys.argv[1]
+
 def getGzipList(basePath = basePath, *typeList):    #默认参数为脚本所在路径
     zipFlieList = []
     #遍历压缩包所在路径,把  .tar.gz .tgz 和 .tar.gzip 文件路径保存到 zipFileList
